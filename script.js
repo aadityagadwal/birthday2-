@@ -34,25 +34,24 @@ setInterval(updateCountdown, 1000);
 /* Music logic */
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
-let musicStarted = false;
 
-function startMusic() {
-if (!musicStarted) {
-music.play().catch(() => {});
-musicStarted = true;
-}
-}
+let isPlaying = false;
 
-document.addEventListener("click", startMusic, { once: true });
-document.addEventListener("touchstart", startMusic, { once: true });
-
-musicBtn.addEventListener("click", (e) => {
-e.stopPropagation();
-if (music.paused) {
-music.play();
-musicBtn.textContent = "🔇";
-} else {
-music.pause();
-musicBtn.textContent = "🔊";
-}
-});
+musicBtn.addEventListener("click", () => {
+  if (!isPlaying) {
+    music.volume = 0.6;
+    music.play()
+      .then(() => {
+        isPlaying = true;
+        musicBtn.textContent = "🔇";
+      })
+      .catch(err => {
+        console.error("Audio blocked:", err);
+        alert("Tap again to enable sound 🔊");
+      });
+  } else {
+    music.pause();
+    isPlaying = false;
+    musicBtn.textContent = "🔊";
+  }
+});;
