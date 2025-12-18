@@ -55,3 +55,19 @@ musicBtn.addEventListener("click", () => {
     musicBtn.textContent = "🔊";
   }
 });;
+
+function confettiBurst() {
+  const emojis = ["🎉", "🎊", "💖", "✨", "🎀"];
+  for (let i = 0; i < 30; i++) {
+    const confetti = document.createElement("span");
+    confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.animationDelay = Math.random() * 0.5 + "s";
+    document.getElementById("confetti").appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 3000);
+  }
+}
+
+confettiBurst();
+
