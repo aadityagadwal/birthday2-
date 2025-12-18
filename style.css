@@ -131,3 +131,18 @@ grid-template-columns: repeat(2, 1fr);
   from { transform: translateX(0); }
   to { transform: translateX(220vw); }
 }
+
+#confetti span {
+  position: fixed;
+  top: -10px;
+  font-size: 1.2rem;
+  animation: fall 3s ease-out forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
