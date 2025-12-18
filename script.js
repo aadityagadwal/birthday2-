@@ -71,14 +71,15 @@ function confettiBurst() {
 
 confettiBurst();
 
-/* Tap / Click Confetti */
-document.addEventListener("click", (e) => {
+/* Tap / Click Confetti — reliable */
+window.addEventListener("pointerdown", (e) => {
   const emojis = ["🎉", "🎊", "✨", "💖", "🎀"];
 
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 14; i++) {
     const confetti = document.createElement("span");
     confetti.className = "confetti";
-    confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    confetti.textContent =
+      emojis[Math.floor(Math.random() * emojis.length)];
 
     confetti.style.left = e.clientX + "px";
     confetti.style.top = e.clientY + "px";
@@ -88,8 +89,9 @@ document.addEventListener("click", (e) => {
 
     document.body.appendChild(confetti);
 
-    setTimeout(() => confetti.remove(), 1200);
+    setTimeout(() => confetti.remove(), 1100);
   }
 });
+
 
 
