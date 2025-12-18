@@ -131,7 +131,7 @@ grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Tap confetti */
+/* Confetti particle */
 .confetti {
   position: fixed;
   width: 10px;
@@ -139,22 +139,20 @@ grid-template-columns: repeat(2, 1fr);
   border-radius: 50%;
   z-index: 9999;
   pointer-events: none;
-  animation: confettiBurst 1.2s ease-out forwards;
+  animation: confettiFade 1.2s ease-out forwards;
 }
 
-@keyframes confettiBurst {
-  0% {
-    transform: translate(0, 0) scale(1);
+@keyframes confettiFade {
+  from {
     opacity: 1;
+    transform: scale(1);
   }
-  100% {
-    transform: translate(
-      calc(cos(var(--angle)) * var(--distance)),
-      calc(sin(var(--angle)) * var(--distance))
-    ) scale(0.6);
+  to {
     opacity: 0;
+    transform: scale(0.6);
   }
 }
+
 
 
 
