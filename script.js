@@ -56,42 +56,33 @@ musicBtn.addEventListener("click", () => {
   }
 });;
 
-function confettiBurst() {
-  const emojis = ["🎉", "🎊", "💖", "✨", "🎀"];
-  for (let i = 0; i < 30; i++) {
+function burstConfetti(x, y) {
+  const emojis = ["🎉", "🎊", "💖", "🎀"];
+  
+  for (let i = 0; i < 18; i++) {
     const confetti = document.createElement("span");
+    confetti.className = "confetti";
     confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.animationDelay = Math.random() * 0.5 + "s";
-    document.getElementById("confetti").appendChild(confetti);
 
-    setTimeout(() => confetti.remove(), 3000);
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 60 + Math.random() * 40;
+
+    confetti.style.left = x + "px";
+    confetti.style.top = y + "px";
+    confetti.style.transform =
+      `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 1200);
   }
 }
 
-confettiBurst();
-
-/* Tap / Click Confetti — reliable */
-window.addEventListener("pointerdown", (e) => {
-  const emojis = ["🎉", "🎊", "✨", "💖", "🎀"];
-
-  for (let i = 0; i < 14; i++) {
-    const confetti = document.createElement("span");
-    confetti.className = "confetti";
-    confetti.textContent =
-      emojis[Math.floor(Math.random() * emojis.length)];
-
-    confetti.style.left = e.clientX + "px";
-    confetti.style.top = e.clientY + "px";
-
-    confetti.style.setProperty("--x", Math.random());
-    confetti.style.setProperty("--y", Math.random());
-
-    document.body.appendChild(confetti);
-
-    setTimeout(() => confetti.remove(), 1100);
-  }
+/* Burst on page load */
+window.addEventListener("load", () => {
+  burstConfetti(window.innerWidth / 2, window.innerHeight / 2);
 });
 
-
-
+/* Burst on tap / click */
+window.addEventListener("pointerdown", (e) => {
+  burstConfetti(e.clientX, e.clientY);
+});
