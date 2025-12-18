@@ -57,7 +57,7 @@ musicBtn.addEventListener("click", () => {
 });;
 
 function burstConfetti(x, y) {
-  const emojis = ["🎉", "🎊", "💖", "🎀"];
+  const emojis = ["🎉"];
   
   for (let i = 0; i < 18; i++) {
     const confetti = document.createElement("span");
