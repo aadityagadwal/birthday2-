@@ -116,3 +116,18 @@ z-index: 10;
 grid-template-columns: repeat(2, 1fr);
 }
 }
+
+.balloons {
+  position: fixed;
+  bottom: -50px;
+  left: -100%;
+  font-size: 2.5rem;
+  opacity: 0.25;
+  animation: floatBalloons 22s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes floatBalloons {
+  from { transform: translateX(0); }
+  to { transform: translateX(220vw); }
+}
