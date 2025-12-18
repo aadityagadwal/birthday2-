@@ -71,3 +71,25 @@ function confettiBurst() {
 
 confettiBurst();
 
+/* Tap / Click Confetti */
+document.addEventListener("click", (e) => {
+  const emojis = ["🎉", "🎊", "✨", "💖", "🎀"];
+
+  for (let i = 0; i < 12; i++) {
+    const confetti = document.createElement("span");
+    confetti.className = "confetti";
+    confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    confetti.style.left = e.clientX + "px";
+    confetti.style.top = e.clientY + "px";
+
+    confetti.style.setProperty("--x", Math.random());
+    confetti.style.setProperty("--y", Math.random());
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 1200);
+  }
+});
+
+
