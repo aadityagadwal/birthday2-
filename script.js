@@ -3,7 +3,6 @@ const hoursEl = document.getElementById("hours");
 const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 
-// 19 Dec 2025 00:00 IST → 18 Dec 2025 18:30 UTC
 const targetDate = new Date("2025-12-18T18:30:00Z");
 
 function updateCountdown() {
@@ -31,3 +30,29 @@ secondsEl.textContent = String(seconds).padStart(2, "0");
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+/* Music logic */
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+let musicStarted = false;
+
+function startMusic() {
+if (!musicStarted) {
+music.play().catch(() => {});
+musicStarted = true;
+}
+}
+
+document.addEventListener("click", startMusic, { once: true });
+document.addEventListener("touchstart", startMusic, { once: true });
+
+musicBtn.addEventListener("click", (e) => {
+e.stopPropagation();
+if (music.paused) {
+music.play();
+musicBtn.textContent = "🔇";
+} else {
+music.pause();
+musicBtn.textContent = "🔊";
+}
+});

@@ -39,7 +39,6 @@ from { transform: translateX(0); }
 to { transform: translateX(220vw); }
 }
 
-/* main */
 .container {
 text-align: center;
 padding: 2.5rem;
@@ -96,7 +95,22 @@ font-size: 1rem;
 color: #7a5c87;
 }
 
-/* mobile */
+/* Music button */
+#musicBtn {
+position: fixed;
+top: 20px;
+right: 20px;
+width: 48px;
+height: 48px;
+border-radius: 50%;
+border: none;
+background: white;
+font-size: 1.2rem;
+cursor: pointer;
+box-shadow: 0 10px 25px rgba(255, 126, 179, 0.3);
+z-index: 10;
+}
+
 @media (max-width: 600px) {
 .countdown {
 grid-template-columns: repeat(2, 1fr);
